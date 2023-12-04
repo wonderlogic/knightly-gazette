@@ -1,3 +1,10 @@
+<img align="left" width="300" height="300" src="https://github.com/wonderlogic/knightly-gazette/assets/121211185/20b80b8c-590f-497b-9eab-8053de902b4a">
+<h1>Knightly Gazette</h1>
+<h2>Welcome to the Knightly Gazette, your one-stop source for all things Ateneo de Davao University. Stay in the know with the latest news, events, and stories that matter most to the Blue Knights community. Join us in celebrating the spirit of excellence and camaraderie!</h2>
+<br />
+<br />
+<br />
+<br />
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
