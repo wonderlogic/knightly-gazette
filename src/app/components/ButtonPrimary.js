@@ -1,8 +1,11 @@
 import React from 'react'
 
-const ButtonPrimary = ({text}) => {
+const ButtonPrimary = ({text,className, id, onClick}) => {
+
+
+
   return (
-    <button className="btn btn-primary">{text}</button>
+    <button onClick={onClick} className={className}>{text}</button>
   )
 }
 

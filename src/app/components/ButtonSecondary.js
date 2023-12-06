@@ -1,8 +1,8 @@
 import React from 'react'
 
-const ButtonSecondary = ({text}) => {
+const ButtonSecondary = ({text,className}) => {
   return (
-    <button className="btn">{text}</button>
+    <button className={className}>{text}</button>
   )
 }
 
