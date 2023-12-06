@@ -1,5 +1,8 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import ButtonPrimary from './ButtonPrimary';
+import ButtonSecondary from './ButtonSecondary';
+import NewsCard from './NewsCard';
 
 const Homepage = () => {
     const [articles, setArticles] = useState([]);
@@ -15,19 +18,13 @@ const Homepage = () => {
     }, []);
 
     return (
-        <div>
-        <h1 className="text-2xl font-bold">Articles</h1>
-        <div>
+        <div className="grid grid-cols-1 gap-6">
+        
             {articles.map((article) => (
-            <div key={article.id} className="p-4 m-4 border rounded">
-                <h2 className="text-xl font-semibold">{article.title}</h2>
-                <p>{article.description}</p>
-                {article.imageURL && <img src={article.imageURL} alt={article.title} />}
-                <div>{article.body}</div>
-            </div>
+                <NewsCard id={article.id} image={article.imageURL} title={article.title} description={article.description}/>
             ))}
-        </div>
-        </div>
+
+      </div>
     );
 };
 
