@@ -17,7 +17,7 @@ const Navbar = () => {
         </div>
         <div>
           <NavbarButtons text="Home"/>
-          <NavbarButtons text="New Post"/>
+          <NavbarButtons text="Create Article"/>
           <ThemeDropdown/>
         </div>
     </div>

@@ -21,15 +21,15 @@ const Homepage = () => {
     const single = articles.slice(1,2)
     return (
         <div className="grid grid-cols-1 gap-6">
-            {articles.map((article) => (
+            {/* {articles.map((article) => (
                 <NewsCard key={article.id} id={article.id} image={article.imageURL} title={article.title} description={article.description}/>
-            ))}
+            ))} */}
 
-            {/* {
+            {
                single.map((article) => (
                <SingleArticle key={article.id} image={article.imageURL} title={article.title} body={article.body} date={article.createdAt}/>
             ))
-            } */}
+            }
       </div>
     );
 };
