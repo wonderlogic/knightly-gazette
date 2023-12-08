@@ -17,7 +17,6 @@ const SingleArticle = ({ id, image, title, body, date }) => {
   const bodyParagraphs = body ? body.split('\n').map((paragraph, idx) => (
     <React.Fragment key={idx}>
       {idx !== 0 && <br />}
-      {idx !== 0 && <br />}
       {paragraph}
     </React.Fragment>
   )) : [];
