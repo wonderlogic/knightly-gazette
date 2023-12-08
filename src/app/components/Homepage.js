@@ -1,36 +1,40 @@
 "use client";
-import React, { useState, useEffect } from 'react';
-import ButtonPrimary from './ButtonPrimary';
-import ButtonSecondary from './ButtonSecondary';
+import { useState, useEffect } from 'react';
 import NewsCard from './NewsCard';
-import SingleArticle from './SingleArticle';
+
+/**
+ * Homepage - A component that fetches and displays a list of articles.
+ */
 
 const Homepage = () => {
+    // State to store the list of articles
     const [articles, setArticles] = useState([]);
 
+    // useEffect hook to fetch articles when the component mounts
     useEffect(() => {
-        async function loadArticles() {
+        // Asynchronous function to fetch articles from the API
+        const loadArticles = async () => {
             const response = await fetch('/api/articles');
             const data = await response.json();
-            setArticles(data);
+            setArticles(data); // Update the state with the fetched articles
         }
 
-        loadArticles();
-    }, []);
-    
-    const single = articles.slice(1,2)
+        loadArticles(); // Invoke the function to load articles
+    }, []); // Empty dependency array to ensure it runs only once on mount
+
     return (
         <div className="grid grid-cols-1 gap-6">
-            {/* {articles.map((article) => (
-                <NewsCard key={article.id} id={article.id} image={article.imageURL} title={article.title} description={article.description}/>
-            ))} */}
-
-            {
-               single.map((article) => (
-               <SingleArticle key={article.id} image={article.imageURL} title={article.title} body={article.body} date={article.createdAt}/>
-            ))
-            }
-      </div>
+            {/* Map over the articles array and render a NewsCard for each article */}
+            {articles.map((article) => (
+                <NewsCard 
+                    key={article.id} // Unique key for each article
+                    id={article.id} 
+                    image={article.imageURL} 
+                    title={article.title} 
+                    description={article.description}
+                />
+            ))}
+        </div>
     );
 };
 

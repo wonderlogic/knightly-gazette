@@ -3,23 +3,30 @@ import React, { useState, useEffect } from "react";
 import Homepage from "./components/Homepage";
 import Navbar from "./components/Navbar";
 
+/**
+ * Home - Main page of the web application.
+ */
+
 export default function Home() {
+  // State to store articles
   const [articles, setArticles] = useState([]);
 
+  // useEffect hook to fetch articles from the API
   useEffect(() => {
+    // Asynchronous function to load articles
     async function loadArticles() {
       const response = await fetch("/api/articles");
       const data = await response.json();
-      setArticles(data);
+      setArticles(data); // Update the state with the fetched articles
     }
 
-    loadArticles();
-  }, []);
+    loadArticles(); // Invoke the function to load articles
+  }, []); // Empty dependency array ensures this runs once on mount
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <Navbar/>
-      <Homepage/>
+      <Navbar />
+      <Homepage />
     </div>
   );
 }
