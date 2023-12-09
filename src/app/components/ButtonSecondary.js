@@ -7,9 +7,9 @@ import React from 'react';
  * @param {string} className - The CSS class for styling the button.
  */
 
-const ButtonSecondary = ({ text, className }) => {
+const ButtonSecondary = ({ text, className, onClick }) => {
   return (
-    <button className={className}>{text}</button>
+    <button onClick={onClick} className={className}>{text}</button>
   );
 }
 
