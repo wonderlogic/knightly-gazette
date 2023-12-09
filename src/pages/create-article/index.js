@@ -101,25 +101,29 @@ const CreateArticle = () => {
           {toastMessage}
         </div>
       )}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Title:</label>
-          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required/>
-        </div>
-        <div>
-          <label>Description:</label>
-          <textarea value={description} onChange={(e) => setDescription(e.target.value)} required/>
-        </div>
-        <div>
-          <label>Body:</label>
-          <textarea value={body} onChange={(e) => setBody(e.target.value)} required/>
-        </div>
-        <div>
-          <label>Image (optional):</label>
-          <input type="file" onChange={handleFileChange} />
-        </div>
-        <ButtonPrimary text="Create Article" className="btn btn-primary" type="submit"/>
-      </form>
+      <div className='max-w-2xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <form onSubmit={handleSubmit}>
+          <div className='flex flex-col mt-10'>
+            <label className='font-bold text-lg'>Title:</label>
+            <input placeholder="Type here" className="input input-bordered input-md w-full" type="text" value={title} onChange={(e) => setTitle(e.target.value)} required/>
+          </div>
+          <div className='flex flex-col mt-5'>
+            <label className='font-bold text-lg'>Description:</label>
+            <textarea placeholder="Short description" className="textarea textarea-bordered textarea-sm w-full" value={description} onChange={(e) => setDescription(e.target.value)} required/>
+          </div>
+          <div className='flex flex-col mt-5'>
+            <label className='font-bold text-lg'>Body:</label>
+            <textarea placeholder="Body of the article" className="textarea textarea-bordered textarea-lg h-72 w-full" value={body} onChange={(e) => setBody(e.target.value)} required/>
+          </div>
+          <div className='flex flex-col mt-5'>
+            <label  className='font-bold text-lg'>Image (optional):</label>
+            <input type="file" className='file-input w-full max-w-xs' onChange={handleFileChange} />
+          </div>
+          <div className='flex flex-row justify-end'>
+            <ButtonPrimary text="Create Article" className="btn btn-primary mt-5" type="submit"/>
+          </div>
+        </form>
+      </div>
     </>
   );
 };
