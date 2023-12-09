@@ -1,6 +1,7 @@
 import React from 'react';
 import NavbarButtons from './NavbarButtons';
 import ThemeDropdown from './ThemeDropdown';
+import { ThemeProvider } from 'next-themes';
 
 /**
  * Navbar - A component that renders the navigation bar of the application.
@@ -33,7 +34,9 @@ const Navbar = () => {
         <NavbarButtons text="Home" href="/" />
         <NavbarButtons text="Create Article" href="/create-article" />
         {/* Theme dropdown component */}
-        <ThemeDropdown />
+        <ThemeProvider defaultTheme="light">
+          <ThemeDropdown />
+        </ThemeProvider>       
       </div>
     </div>
   );

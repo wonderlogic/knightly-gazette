@@ -1,4 +1,5 @@
 import ButtonPrimary from '@/app/components/ButtonPrimary';
+import Navbar from '@/app/components/Navbar';
 import React, { useState } from 'react';
 import 'src/app/globals.css';
 
@@ -101,9 +102,13 @@ const CreateArticle = () => {
           {toastMessage}
         </div>
       )}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Navbar/>
+      </div>
+      
       <div className='max-w-2xl mx-auto px-4 sm:px-6 lg:px-8'>
         <form onSubmit={handleSubmit}>
-          <div className='flex flex-col mt-10'>
+          <div className='flex flex-col '>
             <label className='font-bold text-lg'>Title:</label>
             <input placeholder="Type here" className="input input-bordered input-md w-full" type="text" value={title} onChange={(e) => setTitle(e.target.value)} required/>
           </div>
