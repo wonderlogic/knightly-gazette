@@ -140,7 +140,7 @@ return (
             <input type="file" className='file-input w-full max-w-xs mt-5' onChange={handleFileChange} />
           </div>
           <div className='flex flex-row justify-between'>
-            <ButtonPrimary text="Create Article" className="btn btn-primary mt-5" type="submit"/>
+            <ButtonPrimary text="Edit Article" className="btn btn-primary mt-5" type="submit"/>
             <ButtonSecondary text="Delete article" className="btn mt-5"/>
             
           </div>
