@@ -122,7 +122,7 @@ const CreateArticle = () => {
           </div>
           <div className='flex flex-col mt-5'>
             <label  className='font-bold text-lg'>Image (optional):</label>
-            <input type="file" className='file-input w-full max-w-xs' onChange={handleFileChange} />
+            <input type="file" className='file-input w-full max-w-xs mt-5' onChange={handleFileChange} />
           </div>
           <div className='flex flex-row justify-end'>
             <ButtonPrimary text="Create Article" className="btn btn-primary mt-5" type="submit"/>
