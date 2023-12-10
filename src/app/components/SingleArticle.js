@@ -28,8 +28,12 @@ const SingleArticle = ({ id, image, title, body, date }) => {
     day: 'numeric',
   }) : '';
 
+  const handleEditClick = () => {
+    window.location.href = `/edit-article/${id}`;
+  }
+
   return (
-    <div className="card w-full bg-base-100 shadow-xl p-10">
+    <div key={id} className="card w-full bg-base-100 shadow-xl p-10">
       <h2 className="card-title text-4xl mb-4">
         {title}
       </h2>
@@ -39,7 +43,7 @@ const SingleArticle = ({ id, image, title, body, date }) => {
 
       {/* 'Edit' button */}
       <div className="card-actions justify-between mb-10">
-        <ButtonSecondary text="Edit" className="btn" />
+        <ButtonSecondary text="Edit" className="btn" onClick={handleEditClick}/>
       </div>
 
       {/* Rendering image if available */}

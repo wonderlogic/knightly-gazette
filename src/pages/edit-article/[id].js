@@ -6,7 +6,8 @@ import { useRouter } from 'next/router'; // Importing useRouter from Next.js
 import 'src/app/globals.css';
 import ButtonSecondary from '@/app/components/ButtonSecondary';
 
-const EditArticle = () => {const [article, setArticle] = useState([]); // State to store the article data
+const EditArticle = () => {
+const [article, setArticle] = useState([]); // State to store the article data
 const router = useRouter(); // Using the useRouter hook from Next.js
 const { id } = router.query; // Extracting id from the router's query parameters
 
@@ -142,7 +143,6 @@ return (
           <div className='flex flex-row justify-between'>
             <ButtonPrimary text="Edit Article" className="btn btn-primary mt-5" type="submit"/>
             <ButtonSecondary text="Delete article" className="btn mt-5"/>
-            
           </div>
         </form>
       </div>
