@@ -4,10 +4,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router'; // Importing useRouter from Next.js
 import 'src/app/globals.css';
 
-/**
- * ArticlePage - Component for displaying a single article based on its ID.
- */
-
 const ArticlePage = () => {
     const [article, setArticle] = useState([]); // State to store the article data
     const router = useRouter(); // Using the useRouter hook from Next.js
