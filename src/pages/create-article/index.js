@@ -1,6 +1,7 @@
 import ButtonPrimary from '@/app/components/ButtonPrimary';
 import Navbar from '@/app/components/Navbar';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 import 'src/app/globals.css';
 
 const CreateArticle = () => {
@@ -8,12 +9,18 @@ const CreateArticle = () => {
   const [description, setDescription] = useState('');
   const [body, setBody] = useState('');
   const [image, setImage] = useState(null);
+  const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // New state for toast message and visibility
   const [toastMessage, setToastMessage] = useState('');
   const [showToast, setShowToast] = useState(false);
 
+  // useRouter initialization
+  const router = useRouter();
+
   const handleSubmit = async (event) => {
+    setIsSubmitting(true);
     event.preventDefault();
 
     const formData = new FormData();
@@ -45,9 +52,14 @@ const CreateArticle = () => {
       setTimeout(() => setShowToast(false), 3000);
 
       const newArticleId = responseData.id; 
-      window.location.href = `/article/${newArticleId}`;
+
+      // setTimeout to delay the redirection, allowing the toast to be visible
+      setTimeout(() => {
+        router.push(`/article/${newArticleId}`);
+      }, 3000);
 
     } catch (error) {
+      setIsSubmitting(false);
       console.error('Error submitting article:', error);
       // Show error toast
       setToastMessage(error.message || 'Error creating article.');
@@ -63,6 +75,7 @@ const CreateArticle = () => {
     const resetFileInput = () => {
       event.target.value = null; // This clears the selected file
       setImage(null);
+      setImagePreviewUrl(null); // Clear the image preview URL
     };
   
     // Check if file is selected
@@ -91,9 +104,23 @@ const CreateArticle = () => {
       return;
     }
   
-    // If file is valid, update the image state
+    // If file is valid, update the image state and set image preview URL
     setImage(file);
-  };  
+    setImagePreviewUrl(URL.createObjectURL(file));
+  };
+
+  const handleRemoveImage = () => {
+    setImage(null);
+    setImagePreviewUrl(null);
+    // Resetting the file input if needed
+    document.getElementById('fileInput').value = "";
+  };
+
+  function handleKeyDown(e) {
+    if (e.keyCode === 13) { // 13 is the Enter key
+        e.preventDefault();
+    }
+  }
 
   return (
     <>
@@ -108,26 +135,35 @@ const CreateArticle = () => {
         <form onSubmit={handleSubmit}>
           <div className='flex flex-col '>
             <label className='font-bold text-lg'>Title:</label>
-            <input placeholder="Type here" className="input input-bordered input-md w-full" type="text" value={title} onChange={(e) => setTitle(e.target.value)} required/>
+            <input placeholder="Type here" className="input input-bordered input-md w-full" type="text" value={title} onChange={(e) => setTitle(e.target.value)} maxLength="80" required/>
           </div>
           <div className='flex flex-col mt-5'>
             <label className='font-bold text-lg'>Description:</label>
-            <textarea placeholder="Short description" className="textarea textarea-bordered textarea-sm w-full" value={description} onChange={(e) => setDescription(e.target.value)} required/>
+            <textarea placeholder="Short description" className="textarea textarea-bordered textarea-sm w-full" value={description} onChange={(e) => setDescription(e.target.value)} onKeyDown={handleKeyDown} maxLength="200"  required/>
           </div>
           <div className='flex flex-col mt-5'>
             <label className='font-bold text-lg'>Body:</label>
             <textarea placeholder="Body of the article" className="textarea textarea-bordered textarea-lg h-72 w-full" value={body} onChange={(e) => setBody(e.target.value)} required/>
           </div>
-          
           <div className='flex flex-col mt-5'>
-            <label  className='font-bold text-lg'>Image (optional):</label>
-            <input type="file" className='file-input w-full max-w-xs mt-5' onChange={handleFileChange} />
+            <label className='font-bold text-lg'>Image (optional):</label>
+            <div className="flex gap-2">
+              <input id="fileInput" type="file" className='file-input w-full max-w-xs mt-5' onChange={handleFileChange} />
+              {image && (
+                <button onClick={handleRemoveImage} className="btn btn-error text-white">
+                  Remove Image
+                </button>
+              )}
+            </div>
+            {imagePreviewUrl && <img src={imagePreviewUrl} alt="Image preview" className="mt-3 max-w-xs max-h-64" />}
           </div>
-          
           <div className='flex flex-row justify-end'>
-            <ButtonPrimary text="Create Article" className="btn btn-primary mt-5" type="submit"/>
+            <ButtonPrimary text="Create Article" className={`btn btn-primary mt-5 ${isSubmitting ? 'loading' : ''}`} type="submit" disabled={isSubmitting}/>
           </div>
         </form>
+        <br />
+        <br />
+        <br />
       </div>
     </>
   );

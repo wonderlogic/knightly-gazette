@@ -3,34 +3,23 @@ import path from 'path';
 import fs from 'fs';
 
 /**
- * GET - Asynchronously retrieves multiple articles from the database.
+ * PUT - Handles the update of an article along with its associated image, if any.
  * 
- * @param {Request} request - The incoming HTTP request object.
- * @return {Response} - An HTTP Response object with the fetched articles data.
- */
-
-export async function GET(request) {
-    // Fetching multiple articles from the database using Prisma
-    const data = await prisma.article.findMany();
-
-    // Returning the articles data as a JSON response
-    return new Response(JSON.stringify(data));
-}
-
-/**
- * POST - Asynchronously handles the creation of a new article, including image upload.
- * 
- * @param {Request} request - The incoming HTTP request object.
+ * @param {Request} request - The incoming HTTP request object containing form data.
+ * @param {Object} context - Contains route parameters, including the article ID.
  * @return {Response} - An HTTP Response object indicating the result of the operation.
  */
 
-export async function POST(request) {
+export async function PUT(request, context) {
+    const { id } = context.params;
+
     // Parse the incoming form data
     const formData = await request.formData();
     const title = formData.get('title');
     const description = formData.get('description');
     const body = formData.get('body');
-    const imageFile = formData.get('image'); // This is the image file
+    const imageFile = formData.get('image');
+    const imageRemoved = formData.get('imageRemoved') === 'true';
 
     // Validate the input data
     if (!title || !description || !body) {
@@ -44,6 +33,29 @@ export async function POST(request) {
     }
 
     let imagePath = null;
+
+    if (imageRemoved) {
+
+        // Retrieve the article from the database
+        const article = await prisma.article.findUnique({
+            where: { id },
+        });
+
+        if (!article) {
+            return new Response(JSON.stringify({ error: "Article not found" }), {
+                status: 404,
+            });
+        }
+
+        // Delete the image file if it exists
+        if (article.imageURL) {
+            const imageFullPath = path.join(process.cwd(), 'public', article.imageURL);
+            if (fs.existsSync(imageFullPath)) {
+                fs.unlinkSync(imageFullPath);
+            }
+        }
+    
+    }
 
     // Process the image file if it exists
     if (imageFile && imageFile.size > 0) {
@@ -77,32 +89,30 @@ export async function POST(request) {
     
         // Write the buffer to the file system
         fs.writeFileSync(imageFullPath, buffer);
-        
+
     }
 
-    // Create a new article in the database using Prisma
+    // Update article in the database
     try {
-
-        // Initialize the data object for Prisma
-        let articleData = {
+        let updateData = {
             title,
             description,
-            body,
+            body
         };
 
         // Conditionally add the imageURL if it exists
-        if (imagePath) {
-            articleData.imageURL = imagePath;
+        if (imagePath || imageRemoved) {
+            updateData.imageURL = imagePath || null;
         }
 
-        const newArticle = await prisma.article.create({
-            data: articleData,
+        const updatedArticle = await prisma.article.update({
+            where: { id },
+            data: updateData,
         });
 
-        // Return the created article as a JSON response
-        return new Response(JSON.stringify(newArticle), { status: 201 });
+        return new Response(JSON.stringify(updatedArticle), { status: 200 });
     } catch (error) {
-        console.error('Error creating article:', error);
-        return new Response(JSON.stringify({ error: "Error creating article" }), { status: 500 });
+        console.error('Error updating article:', error);
+        return new Response(JSON.stringify({ error: "Error updating article" }), { status: 500 });
     }
 }
