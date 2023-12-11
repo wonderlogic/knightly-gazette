@@ -33,7 +33,8 @@ const ArticlePage = () => {
             <div className="grid grid-cols-1 gap-6">
                 {/* Rendering the single article component */}
                 <SingleArticle 
-                    key={article.id} 
+                    key={article.id}
+                    id={article.id}  
                     image={article.imageURL} 
                     title={article.title} 
                     body={article.body} 

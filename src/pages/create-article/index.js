@@ -102,11 +102,9 @@ const CreateArticle = () => {
           {toastMessage}
         </div>
       )}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <Navbar/>
-      </div>
-      
-      <div className='max-w-2xl mx-auto px-4 sm:px-6 lg:px-8'>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <Navbar/>
+
         <form onSubmit={handleSubmit}>
           <div className='flex flex-col '>
             <label className='font-bold text-lg'>Title:</label>
@@ -120,10 +118,12 @@ const CreateArticle = () => {
             <label className='font-bold text-lg'>Body:</label>
             <textarea placeholder="Body of the article" className="textarea textarea-bordered textarea-lg h-72 w-full" value={body} onChange={(e) => setBody(e.target.value)} required/>
           </div>
+          
           <div className='flex flex-col mt-5'>
             <label  className='font-bold text-lg'>Image (optional):</label>
             <input type="file" className='file-input w-full max-w-xs mt-5' onChange={handleFileChange} />
           </div>
+          
           <div className='flex flex-row justify-end'>
             <ButtonPrimary text="Create Article" className="btn btn-primary mt-5" type="submit"/>
           </div>

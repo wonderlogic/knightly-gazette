@@ -17,6 +17,10 @@ const NewsCard = ({ id, image, title, description }) => {
     window.location.href = `/article/${id}`;
   };
 
+  const handleEditClick = () => {
+    window.location.href = `/edit-article/${id}`;
+  }
+
   // Conditional rendering based on the presence of an image
   if (image != null) {
     return (
@@ -30,7 +34,7 @@ const NewsCard = ({ id, image, title, description }) => {
           <p>{description}</p>
 
           <div className="card-actions justify-between">
-            <ButtonSecondary text="Edit" className="btn" />
+            <ButtonSecondary text="Edit" className="btn" onClick={handleEditClick}/>
             <ButtonPrimary text="Read More" className="btn btn-primary" onClick={handleClick} />
           </div>
         </div>
@@ -44,7 +48,7 @@ const NewsCard = ({ id, image, title, description }) => {
           <p>{description}</p>
 
           <div className="card-actions justify-between">
-            <ButtonSecondary text="Edit" className="btn mt-7" />
+            <ButtonSecondary text="Edit" className="btn mt-7" onClick={handleEditClick}/>
             <ButtonPrimary text="Read More" className="btn btn-primary mt-7" onClick={handleClick} />
           </div>
         </div>
