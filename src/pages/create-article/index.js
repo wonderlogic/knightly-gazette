@@ -1,4 +1,5 @@
 import ButtonPrimary from '@/app/components/ButtonPrimary';
+import Navbar from '@/app/components/Navbar';
 import React, { useState } from 'react';
 import 'src/app/globals.css';
 
@@ -101,9 +102,13 @@ const CreateArticle = () => {
           {toastMessage}
         </div>
       )}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Navbar/>
+      </div>
+      
       <div className='max-w-2xl mx-auto px-4 sm:px-6 lg:px-8'>
         <form onSubmit={handleSubmit}>
-          <div className='flex flex-col mt-10'>
+          <div className='flex flex-col '>
             <label className='font-bold text-lg'>Title:</label>
             <input placeholder="Type here" className="input input-bordered input-md w-full" type="text" value={title} onChange={(e) => setTitle(e.target.value)} required/>
           </div>
@@ -117,7 +122,7 @@ const CreateArticle = () => {
           </div>
           <div className='flex flex-col mt-5'>
             <label  className='font-bold text-lg'>Image (optional):</label>
-            <input type="file" className='file-input w-full max-w-xs' onChange={handleFileChange} />
+            <input type="file" className='file-input w-full max-w-xs mt-5' onChange={handleFileChange} />
           </div>
           <div className='flex flex-row justify-end'>
             <ButtonPrimary text="Create Article" className="btn btn-primary mt-5" type="submit"/>
