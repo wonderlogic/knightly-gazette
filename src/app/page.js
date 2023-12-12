@@ -24,9 +24,15 @@ export default function Home() {
   }, []); // Empty dependency array ensures this runs once on mount
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <Navbar />
-      <Homepage />
+    <div className="flex flex-col justify-top items-center">
+      
+      <div className="fixed z-10 min-w-full flex flex-row justify-center items-center">
+        <Navbar />
+      </div>
+      <div className="max-w-7xl mt-52">
+        <Homepage />
+      </div>
+     
     </div>
   );
 }

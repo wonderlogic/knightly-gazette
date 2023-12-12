@@ -24,12 +24,12 @@ const NewsCard = ({ id, image, title, description }) => {
   // Conditional rendering based on the presence of an image
   if (image != null) {
     return (
-      <div key={id} className="card lg:card-side bg-base-100 shadow-xl">
-        <figure>
-          <img src={image} alt={title} />
+      <div key={id} className="card lg:card-side bg-base-100 shadow-xl min-h-[284px]">
+        <figure className="min-h-full">
+            <img className="min-h-full" src={image} alt={title} />
         </figure>
 
-        <div className="card-body">
+        <div className="card-body min-w-[70%] ">
           <h2 className="card-title">{title}</h2>
           <p>{description}</p>
 
@@ -45,7 +45,7 @@ const NewsCard = ({ id, image, title, description }) => {
       <div key={id} className="card lg:card-side bg-base-100 shadow-xl">
         <div className="card-body">
           <h2 className="card-title">{title}</h2>
-          <p>{description}</p>
+          <p className="">{description}</p>
 
           <div className="card-actions justify-between">
             <ButtonSecondary text="Edit" className="btn mt-7" onClick={handleEditClick}/>
