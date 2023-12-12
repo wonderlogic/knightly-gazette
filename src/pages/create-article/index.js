@@ -160,6 +160,7 @@ const CreateArticle = () => {
             </div>
             {imagePreviewUrl && <img src={imagePreviewUrl} alt="Image preview" className="mt-3 max-w-xs max-h-64" />}
           </div>
+          <br />
           <div className='flex flex-row justify-start'>
             <ButtonPrimary text="Create Article" className={`btn btn-primary mt-5 ${isSubmitting ? 'loading' : ''}`} type="submit" disabled={isSubmitting}/>
           </div>
