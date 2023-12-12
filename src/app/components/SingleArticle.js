@@ -48,13 +48,16 @@ const SingleArticle = ({ id, image, title, body, date }) => {
 
       {/* Rendering image if available */}
       {image && (
-        <figure>
+        <div className='min-h-[400px] flex justify-center'>
           <img
-            className='max-h-[600px] w-auto'
+            className='h-full max-w-[600px] object-cover'
             src={'/' + image}
             alt={title}
           />
-        </figure>
+        
+
+        </div>
+        
       )}
 
       {/* Rendering the article body */}
