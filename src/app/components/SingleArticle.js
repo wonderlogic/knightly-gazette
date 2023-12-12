@@ -33,7 +33,7 @@ const SingleArticle = ({ id, image, title, body, date }) => {
   }
 
   return (
-    <div key={id} className="card w-full bg-base-100 shadow-xl p-10">
+    <div key={id} className="card w-full bg-base-100 shadow-xl p-10 mb-10">
       <h2 className="card-title text-4xl mb-4">
         {title}
       </h2>
