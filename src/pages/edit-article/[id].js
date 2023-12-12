@@ -236,12 +236,14 @@ const EditArticle = () => {
           {toastMessage}
         </div>
       )}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+
+
         <div>
           <Navbar/>
         </div>
         
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+        <div className='px-4 sm:px-6 lg:px-8'>
           <form onSubmit={handleSubmit}>
             <div className='flex flex-col '>
               <label className='font-bold text-lg'>Title:</label>
@@ -284,8 +286,8 @@ const EditArticle = () => {
                 )}
                 <label className='font-bold text-lg'>Image (optional):</label>
                 {imagePreviewUrl && <img src={imagePreviewUrl} alt="Image preview" className="mt-3 max-w-xs max-h-64" />}
-                <div className="flex gap-2">
-                  <input id="fileInput" type="file" className='file-input w-full max-w-xs mt-5' onChange={handleFileChange} />
+                <div className="flex gap-2  mt-5">
+                  <input id="fileInput" type="file" className='file-input w-full max-w-xs' onChange={handleFileChange} />
                   {image && (
                     <button onClick={handleRemoveImageWithoutPrev} className="btn btn-error text-white">
                       Remove Image
@@ -297,7 +299,7 @@ const EditArticle = () => {
             <br />
             <div className='flex flex-row justify-between'>
               <ButtonPrimary text="Edit Article" className={`btn btn-primary mt-5 ${isSubmitting ? 'loading' : ''}`} type="submit" disabled={isSubmitting}/>
-              <ButtonSecondary text="Delete article" className={`btn mt-5 ${isSubmitting ? 'loading' : ''}`} onClick={handleDelete}/>
+              <ButtonSecondary text="Delete article" className={`btn btn-error mt-5 ${isSubmitting ? 'loading' : ''}`} onClick={handleDelete}/>
             </div>
           </form>
         </div>

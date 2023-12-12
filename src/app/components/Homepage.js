@@ -23,7 +23,7 @@ const Homepage = () => {
     }, []); // Empty dependency array to ensure it runs only once on mount
 
     return (
-        <div className="grid grid-cols-1 gap-6">
+        <div className="flex flex-col gap-10 mb-16 ">
             {/* Map over the articles array and render a NewsCard for each article */}
             {articles.map((article) => (
                 <NewsCard 

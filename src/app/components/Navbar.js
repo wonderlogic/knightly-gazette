@@ -9,7 +9,7 @@ import { ThemeProvider } from 'next-themes';
 
 const Navbar = () => {
   return (
-    <div className="navbar bg-base-100 justify-between">
+    <div className="navbar bg-base-100 justify-between max-w-7xl">
       {/* Logo and title section */}
       <div className="flex items-center space-x-4 py-8">
         {/* Link to homepage with logo */}

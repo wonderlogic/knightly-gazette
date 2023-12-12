@@ -50,6 +50,7 @@ const SingleArticle = ({ id, image, title, body, date }) => {
       {image && (
         <figure>
           <img
+            className='max-h-[600px] w-auto'
             src={'/' + image}
             alt={title}
           />

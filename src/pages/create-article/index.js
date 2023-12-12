@@ -129,9 +129,12 @@ const CreateArticle = () => {
           {toastMessage}
         </div>
       )}
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <Navbar/>
+      <div className="max-w-7xl mx-auto">
+        <div>
+          <Navbar/>
+        </div>
 
+        <div  className="sm:px-6 lg:px-8">
         <form onSubmit={handleSubmit}>
           <div className='flex flex-col '>
             <label className='font-bold text-lg'>Title:</label>
@@ -147,8 +150,8 @@ const CreateArticle = () => {
           </div>
           <div className='flex flex-col mt-5'>
             <label className='font-bold text-lg'>Image (optional):</label>
-            <div className="flex gap-2">
-              <input id="fileInput" type="file" className='file-input w-full max-w-xs mt-5' onChange={handleFileChange} />
+            <div className="flex gap-2 mt-5">
+              <input id="fileInput" type="file" className='file-input w-full max-w-xs' onChange={handleFileChange} />
               {image && (
                 <button onClick={handleRemoveImage} className="btn btn-error text-white">
                   Remove Image
@@ -157,13 +160,15 @@ const CreateArticle = () => {
             </div>
             {imagePreviewUrl && <img src={imagePreviewUrl} alt="Image preview" className="mt-3 max-w-xs max-h-64" />}
           </div>
-          <div className='flex flex-row justify-end'>
+          <div className='flex flex-row justify-start'>
             <ButtonPrimary text="Create Article" className={`btn btn-primary mt-5 ${isSubmitting ? 'loading' : ''}`} type="submit" disabled={isSubmitting}/>
           </div>
         </form>
         <br />
         <br />
         <br />
+        </div>
+        
       </div>
     </>
   );
