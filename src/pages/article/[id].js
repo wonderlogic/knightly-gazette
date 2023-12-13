@@ -24,7 +24,7 @@ const ArticlePage = () => {
     }, [id]); // Adding id as a dependency to re-run the effect when id changes
 
     return (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-7/12 mx-auto">
             <Navbar />
             <div className="grid grid-cols-1 gap-6">
                 {/* Rendering the single article component */}

@@ -129,7 +129,7 @@ const CreateArticle = () => {
           {toastMessage}
         </div>
       )}
-      <div className="max-w-7xl mx-auto">
+      <div className="w-7/12 mx-auto">
         <div>
           <Navbar/>
         </div>

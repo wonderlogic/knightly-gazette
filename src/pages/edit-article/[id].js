@@ -236,7 +236,7 @@ const EditArticle = () => {
           {toastMessage}
         </div>
       )}
-      <div className="w-8/12 mx-auto">
+      <div className="w-7/12 mx-auto">
 
 
         <div className='w-full'>

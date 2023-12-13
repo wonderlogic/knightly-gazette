@@ -26,10 +26,10 @@ export default function Home() {
   return (
     <div className="flex flex-col justify-top items-center">
       
-      <div className="fixed z-10 flex flex-row justify-center items-center w-8/12">
+      <div className="fixed z-10 flex flex-row justify-center items-center w-7/12">
         <Navbar />
       </div>
-      <div className="w-8/12 mt-52">
+      <div className="w-7/12 mt-52">
         <Homepage />
       </div>
      
