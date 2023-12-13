@@ -83,7 +83,7 @@ describe('EditArticle Component', () => {
     it('handles article deletion', async () => {
         window.confirm = jest.fn().mockImplementation(() => true); // Mock confirmation
 
-        fetch.mockResponseOnce(JSON.stringify({ id: '123', title: 'Test Title', description: 'Test Description', body: 'Test Body', imageURL: 'test-image.jpg' }));
+        fetch.mockResponseOnce(JSON.stringify({ id: '123', title: 'Test Title', description: 'Test Description', body: 'Test Body', imageURL: 'images/test-image.jpg' }));
         
         render(<EditArticle />);
 
