@@ -42,7 +42,7 @@ const Homepage = () => {
     }
 
     return (
-        <div className="flex flex-col gap-10 mb-16 ">
+        <div className="flex flex-col gap-10 mb-16 w-full">
             {/* Map over the articles array and render a NewsCard for each article */}
             {articles.map((article) => (
                 <NewsCard 
