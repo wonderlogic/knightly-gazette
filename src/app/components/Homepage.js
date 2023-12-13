@@ -10,17 +10,36 @@ const Homepage = () => {
     // State to store the list of articles
     const [articles, setArticles] = useState([]);
 
+    const [isEmpty, setIsEmpty] = useState(false); // Track if articles array is empty
+    const [error, setError] = useState(null); // Track errors
+
     // useEffect hook to fetch articles when the component mounts
     useEffect(() => {
         // Asynchronous function to fetch articles from the API
         const loadArticles = async () => {
-            const response = await fetch('/api/articles');
-            const data = await response.json();
-            setArticles(data); // Update the state with the fetched articles
+            try {
+                const response = await fetch('/api/articles');
+                const data = await response.json();
+                if (data.length === 0) {
+                    setIsEmpty(true);
+                } else {
+                    setArticles(data); // Update the state with the fetched articles
+                }
+            } catch (err) {
+                setError('Encountered an error while fetching articles, please check the logs');
+            }
         }
 
         loadArticles(); // Invoke the function to load articles
     }, []); // Empty dependency array to ensure it runs only once on mount
+
+    if (error) {
+        return <div>{error}</div>; // Display the error message
+    }
+
+    if (isEmpty) {
+        return <div>There are no articles yet. Create one now :D</div>; // Display message for empty articles
+    }
 
     return (
         <div className="flex flex-col gap-10 mb-16 ">
