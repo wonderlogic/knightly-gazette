@@ -33,7 +33,7 @@ Install the dependencies by running:
 npm install
 ```
 
-Then, rename the `.env.example` file to `.env`
+Rename the `.env.example` file to `.env`
 
 ![envExample](https://github.com/wonderlogic/knightly-gazette/assets/121211185/a40fd756-a1d9-41f8-8c15-eff9f663f9f3)
 
