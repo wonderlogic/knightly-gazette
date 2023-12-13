@@ -18,8 +18,8 @@ describe('Homepage Component', () => {
     it('fetches and displays articles', async () => {
       // Mock article data
       const mockArticles = [
-        { id: 1, imageURL: 'url1', title: 'Article 1', description: 'Description 1' },
-        { id: 2, imageURL: 'url2', title: 'Article 2', description: 'Description 2' }
+        { id: 1, imageURL: 'images/test1.png', title: 'Article 1', description: 'Description 1' },
+        { id: 2, imageURL: 'images/test2.png', title: 'Article 2', description: 'Description 2' }
       ];
 
       // Mock fetch response
