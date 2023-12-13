@@ -1,4 +1,4 @@
-import { render, waitFor } from '@testing-library/react';
+import { render, waitFor, screen } from '@testing-library/react';
 import fetchMock from 'jest-fetch-mock';
 import Homepage from './Homepage';
 import React from 'react';
