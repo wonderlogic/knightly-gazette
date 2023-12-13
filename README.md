@@ -1,43 +1,73 @@
 <img align="left" width="300" height="300" src="https://github.com/wonderlogic/knightly-gazette/assets/121211185/20b80b8c-590f-497b-9eab-8053de902b4a">
 <h1>Knightly Gazette</h1>
-<h2>Welcome to the Knightly Gazette, your one-stop source for all things Ateneo de Davao University. Stay in the know with the latest news, events, and stories that matter most to the Blue Knights community. Join us in celebrating the spirit of excellence and camaraderie!</h2>
+<h2>Welcome to the Knightly Gazette, your one-stop source for all things Ateneo de Davao University. Stay informed with the latest news, events, and stories that matter most to the Blue Knights community. Join us in celebrating the spirit of excellence and camaraderie!</h2>
 <br />
 <br />
 <br />
+
+## Stack
+
+- Next.js
+- Prisma ORM with SQLite
+- TailwindCSS
+- daisyUI
+- next-themes
+- Jest
+
 <br />
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-First, run the development server:
+First, install Git at https://git-scm.com/downloads
+
+Install Node.js at https://nodejs.org/en/download (choose LTS)
+
+Clone the repository:
+```bash
+git clone https://github.com/wonderlogic/knightly-gazette.git
+cd knightly-gazette
+```
+
+Install the dependencies by running:
+```bash
+npm install
+```
+
+Rename the `.env.example` file to `.env`
+
+![envExample](https://github.com/wonderlogic/knightly-gazette/assets/121211185/a40fd756-a1d9-41f8-8c15-eff9f663f9f3)
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+<br />
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Seeding the database
 
-## Learn More
+The repository already has a seeded database. But, if you want to customize it, you can edit the `seed.js` inside the `prisma` folder.
 
-To learn more about Next.js, take a look at the following resources:
+Once done, you can delete the `migrations` folder and `dev.db`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Then, run:
+```bash
+npx prisma migrate dev --name init
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<br />
 
-## Deploy on Vercel
+## Testing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To run the test suites, do the following:
+```bash
+npm run test
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Enter `a` if necessary to run all test suites
+
+![testSuites](https://github.com/wonderlogic/knightly-gazette/assets/121211185/fd791fb5-6bb5-47db-9a08-d8322434d810)
+
