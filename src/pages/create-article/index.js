@@ -137,16 +137,16 @@ const CreateArticle = () => {
         <div  className="sm:px-6 lg:px-8">
         <form onSubmit={handleSubmit}>
           <div className='flex flex-col '>
-            <label className='font-bold text-lg'>Title:</label>
-            <input placeholder="Type here" className="input input-bordered input-md w-full" type="text" value={title} onChange={(e) => setTitle(e.target.value)} maxLength="80" required/>
+            <label htmlFor="title" className='font-bold text-lg'>Title:</label>
+            <input id="title" placeholder="Type here" className="input input-bordered input-md w-full" type="text" value={title} onChange={(e) => setTitle(e.target.value)} maxLength="80" required/>
           </div>
           <div className='flex flex-col mt-5'>
-            <label className='font-bold text-lg'>Description:</label>
-            <textarea placeholder="Short description" className="textarea textarea-bordered textarea-sm w-full" value={description} onChange={(e) => setDescription(e.target.value)} onKeyDown={handleKeyDown} maxLength="200"  required/>
+            <label htmlFor="description" className='font-bold text-lg'>Description:</label>
+            <textarea id="description" placeholder="Short description" className="textarea textarea-bordered textarea-sm w-full" value={description} onChange={(e) => setDescription(e.target.value)} onKeyDown={handleKeyDown} maxLength="200"  required/>
           </div>
           <div className='flex flex-col mt-5'>
-            <label className='font-bold text-lg'>Body:</label>
-            <textarea placeholder="Body of the article" className="textarea textarea-bordered textarea-lg h-72 w-full" value={body} onChange={(e) => setBody(e.target.value)} required/>
+            <label htmlFor="body" className='font-bold text-lg'>Body:</label>
+            <textarea id="body" placeholder="Body of the article" className="textarea textarea-bordered textarea-lg h-72 w-full" value={body} onChange={(e) => setBody(e.target.value)} required/>
           </div>
           <div className='flex flex-col mt-5'>
             <label className='font-bold text-lg'>Image (optional):</label>

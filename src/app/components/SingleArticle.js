@@ -61,7 +61,7 @@ const SingleArticle = ({ id, image, title, body, date }) => {
       )}
 
       {/* Rendering the article body */}
-      <div className="card-body text-justify">
+      <div className="card-body text-justify" data-testid="article-body">
         {bodyParagraphs}
       </div>
     </div>
