@@ -30,7 +30,13 @@ describe('Navbar Component', () => {
         expect(screen.getByText('Home')).toBeInTheDocument();
         expect(screen.getByText('Create Article')).toBeInTheDocument();
 
-        // Check for theme dropdown - this might need to be adjusted based on how ThemeDropdown renders
+        // Check for theme dropdown
         expect(screen.getByLabelText('Light')).toBeInTheDocument();
+        expect(screen.getByLabelText('Dark')).toBeInTheDocument();
+        expect(screen.getByLabelText('Corporate')).toBeInTheDocument();
+        expect(screen.getByLabelText('Business')).toBeInTheDocument();
+        expect(screen.getByLabelText('Dim')).toBeInTheDocument();
+        expect(screen.getByLabelText('Cyberpunk')).toBeInTheDocument();
+        expect(screen.getByLabelText('Retro')).toBeInTheDocument();
     });
 });
