@@ -42,8 +42,8 @@ const NewsCard = ({ id, image, title, description }) => {
     );
   } else {
     return (
-      <div key={id} className="card lg:card-side bg-base-100 shadow-xl">
-        <div className="card-body">
+      <div key={id} className="card lg:card-side bg-base-100 shadow-xl w-full">
+        <div className="card-body shrink">
           <h2 className="card-title">{title}</h2>
           <p className="">{description}</p>
 

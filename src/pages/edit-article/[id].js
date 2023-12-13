@@ -232,14 +232,14 @@ const EditArticle = () => {
   return (
     <>
       {showToast && (
-        <div className="fixed top-5 right-5 bg-blue-500 text-white p-3 rounded">
+        <div className="fixed top-5 right-5 bg-blue-500 text-white p-3 rounded z-20">
           {toastMessage}
         </div>
       )}
-      <div className="max-w-7xl mx-auto">
+      <div className="w-8/12 mx-auto">
 
 
-        <div>
+        <div className='w-full'>
           <Navbar/>
         </div>
         
