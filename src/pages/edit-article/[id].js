@@ -147,6 +147,8 @@ const EditArticle = () => {
         setShowToast(true);
         setTimeout(() => setShowToast(false), 3000);
       }
+    } else {
+      setIsSubmitting(false);
     }
   };
 
